@@ -57,7 +57,7 @@ Public Class Form1
     End Sub
 
     Private Sub LoadTable()
-        Dim query As String = "SELECT id, name, age, email FROM student_tbl"
+        Dim query As String = "SELECT * FROM student_tbl"
 
         Try
             Using conn As New MySqlConnection(connectionString)
@@ -65,6 +65,7 @@ Public Class Form1
                 Dim table As New DataTable()
                 adapter.Fill(table)
                 DataGridView1.DataSource = table
+                DataGridView1.Columns("id").Visible = False
             End Using
 
         Catch ex As Exception
